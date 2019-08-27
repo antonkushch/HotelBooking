@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HotelBooking.DAL.Repositories.EFUnitOfWork">
+    <Position X="12" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQIGAMAQACAyAAAAACAAAAAAAAAAAIAAgAAAAAAAAAg=</HashCode>
+      <FileName>Repositories\EFUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.Repositories.BookingRepository">
+    <Position X="1" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Repositories\BookingRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.Repositories.ClientRepository">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Repositories\ClientRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.Repositories.HotelRepository">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Repositories\HotelRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.Repositories.HotelRoomMapRepository">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Repositories\HotelRoomMapRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.Repositories.PriceOfHotelCategoryRepository">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Repositories\PriceOfHotelCategoryRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.Repositories.RoomCategoryRepository">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Repositories\RoomCategoryRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelBooking.DAL.EF.HotelBookingContext">
+    <Position X="7.5" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="HotelBooking.DAL.EF.HotelBookingContext.StoreDbInitializer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>EF\HotelBookingContext.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAiAAAAACAAAAAAAAAAAAAAgAAAAAAAAAg=</HashCode>
+      <FileName>EF\HotelBookingContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="HotelBooking.DAL.Interfaces.IUnitOfWork">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAMAAAAAiAAAAACAAAAAAAAAAAAAAgAAAAAAAAAg=</HashCode>
+      <FileName>Interfaces\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HotelBooking.DAL.Interfaces.IRepository&lt;T&gt;">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEIAEAAAgAAAAIAAAA=</HashCode>
+      <FileName>Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

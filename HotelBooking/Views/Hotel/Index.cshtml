@@ -1,0 +1,169 @@
+﻿@model IList<HotelBooking.Models.HotelViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hotels</h2>
+
+<div>
+    @Html.ActionLink("Add hotel", "AddHotel")
+</div>
+<br />
+
+@using (Html.BeginForm(new { @id = "plainForm" }))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">Enter hotel name:</label>
+        <div class="col-md-10">
+            <input type="text" id="hotelName" name="hotelName" value="@Session["hotelName"]" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="command" value="Search Hotel" class="btn btn-default" />
+        </div>
+    </div>
+
+    @{
+        if (ViewBag.Error != null)
+        {
+            <label class="text-danger">@ViewBag.Error</label>
+        }
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].RoomQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Email)
+        </th>
+    </tr>
+
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        <input type="hidden" name="[@(i)].HotelID" value="@(Model[i].HotelID)" />
+        <tr id="row_@Model[i].HotelID">
+            <td>
+                <input type="hidden" name="[@(i)].Country" value="@(Model[i].Country)" />
+                @Html.DisplayFor(modelItem => modelItem[i].Country)
+            </td>
+            <td>
+                <input type="hidden" name="[@(i)].Name" value="@(Model[i].Name)" />
+                @Html.DisplayFor(modelItem => modelItem[i].Name)
+            </td>
+            <td>
+                <input type="hidden" name="[@(i)].City" value="@(Model[i].City)" />
+                @Html.DisplayFor(modelItem => modelItem[i].City)
+            </td>
+            <td>
+                <input type="hidden" name="[@(i)].RoomQuantity" value="@(Model[i].RoomQuantity)" />
+                @Html.DisplayFor(modelItem => modelItem[i].RoomQuantity)
+            </td>
+            <td>
+                <input type="hidden" name="[@(i)].Description" value="@(Model[i].Description)" />
+                @Html.DisplayFor(modelItem => modelItem[i].Description)
+            </td>
+            <td>
+                <input type="hidden" name="[@(i)].Email" value="@(Model[i].Email)" />
+                @Html.DisplayFor(modelItem => modelItem[i].Email)
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger" onclick="ConfirmDelete(@Model[i].HotelID)">Delete</a>
+            </td>
+            <td>
+                @Html.ActionLink("View", "ViewHotel", new { id = Model[i].HotelID }, new { @class = "btn btn-default" })
+            </td>
+            <td>
+                @Html.ActionLink("Add Booking", "AddBooking", new { id = Model[i].HotelID }, new { @class = "btn btn-default" })
+            </td>
+            <td>
+                @Html.ActionLink("Cancel Booking", "DeleteBooking", new { id = Model[i].HotelID }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.ActionLink("View booked places", "ViewBookedRooms", new { id = Model[i].HotelID }, new { @class = "btn btn-default" })
+            </td>
+            <td>
+                @Html.ActionLink("View free places", "ViewFreeRooms", new { id = Model[i].HotelID }, new { @class = "btn btn-default" })
+            </td>
+            <td>
+                @Html.ActionLink("Related clients", "ViewRelatedClients", new { id = Model[i].HotelID }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    }
+
+</table>
+}
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title">Delete Hotel</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to delete this?</h4>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-success" onclick="DeleteHot()">Confirm</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<input type="hidden" id="hiddenHotelId" />
+
+<script>
+    var ConfirmDelete = function (HotelId) {
+
+        $("#hiddenHotelId").val(HotelId);
+        $("#myModal").modal('show');
+
+    }
+
+    var DeleteHot = function () {
+
+        var hotId = $("#hiddenHotelId").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Hotel/DeleteHotel",
+            data: { HotelId: hotId },
+            success: function (result) {
+                $("#myModal").modal("hide");
+                $("#row_" + hotId).remove();
+
+            }
+
+        })
+
+    }
+</script>
+
+
+

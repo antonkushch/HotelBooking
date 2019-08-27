@@ -1,0 +1,50 @@
+﻿@model HotelBooking.Models.ViewRelatedClientsVM
+
+@{
+    ViewBag.Title = "ViewRelatedClients";
+}
+
+<h2>Clients related to @Model.Hotel.Name (@Model.Hotel.Country, @Model.Hotel.City)</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.ElementAt(0).Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.ElementAt(0).Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.ElementAt(0).Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.ElementAt(0).Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.ElementAt(0).BirthDate)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Clients)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.BirthDate))
+            @*@Html.DisplayFor(modelItem => item.BirthDate)*@
+        </td>
+    </tr>
+    }
+</table>
+

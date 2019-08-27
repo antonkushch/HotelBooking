@@ -1,0 +1,93 @@
+﻿@model HotelBooking.Models.BookingViewModel
+
+@{
+    ViewBag.Title = "ViewBooking";
+}
+
+<h2>View Booking</h2>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Hotel.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.Hotel.Name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Hotel.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.Hotel.Country, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Hotel.City, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.Hotel.City, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Client.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.Client.Name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Client.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.Client.Surname, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BookingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.BookingDate, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PeopleQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.PeopleQuantity, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RoomNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.RoomNumber, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RoomCategory.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.RoomCategory.Name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TotalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="control-label col-md-2">
+            @Html.DisplayFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+</div>

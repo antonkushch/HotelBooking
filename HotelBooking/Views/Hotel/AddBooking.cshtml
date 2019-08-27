@@ -1,0 +1,184 @@
+﻿@model HotelBooking.Models.FullBookingViewModel
+@{
+    ViewBag.Title = "AddBooking";
+}
+
+<h2>Booking a room in @Model.HotelName</h2>
+
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    <input type="hidden" name="HotelID" value="@Model.HotelID" />
+    <input type="hidden" name="HotelName" value="@Model.HotelName" />
+
+    <div style="font-size:large">
+        <label class="control-label col-md-2">Client info:</label>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-6" style="margin-top:10px"><span style="text-decoration:underline">If you booked rooms in the past on our site - you can leave Email and Phone empty, we already know your info :)</span></label>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control datepicker", @Value = Model.BirthDate.ToString("dd/MM/yyyy") } })
+            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="font-size:large">
+        <label class="control-label col-md-2">Booking info:</label>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @value = Model.StartDate.ToString("dd/MM/yyyy"), @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @value = Model.EndDate.ToString("dd/MM/yyyy"), @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="command" value="Find free rooms" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" style="text-decoration:underline">Available categories:</label>
+    </div>
+
+    @{
+        foreach (var element in Model.FreeRooms)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">@element.Item1 place apartement:</label>
+                <div class="col-md-10">
+                    <label style="font-weight:normal !important">@element.Item2 room(s) for @element.Item3 UAH per night</label>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.InputRoomQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.InputRoomQuantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.InputRoomQuantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PeopleQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PeopleQuantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PeopleQuantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @{
+        if (ViewBag.DatesError != null)
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <label class="text-danger" style="font-weight:normal !important">@ViewBag.DatesError</label>
+                </div>
+            </div>
+        }
+        else if (ViewBag.RoomError != null)
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <label class="text-danger" style="font-weight:normal !important">@ViewBag.RoomError</label>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="command" value="Confirm booking" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Hotel List", "Index")
+</div>
+
+@if (ViewBag.SuccessMsg != null)
+{
+<script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.SuccessMsg");
+        }
+</script>
+}
+
+@section scripts {
+<script type="text/javascript">
+    $(function () {
+        $('#StartDate').datetimepicker({
+            defaultDate: '@Model.StartDate',
+            format: 'L',
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top',
+            stepping: 15
+        });
+    });
+
+    $(function () {
+        $('#EndDate').datetimepicker({
+            defaultDate: '@Model.EndDate',
+            format: 'L',
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top',
+            stepping: 15
+        });
+    });
+</script>
+}
